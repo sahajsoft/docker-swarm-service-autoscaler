@@ -58,7 +58,7 @@ class Autoscaler(object):
 
   def start(self):
     job = self.scheduler.add_job(self.run, 'interval', seconds=self.config['poll_interval_seconds'])
-    job.modify(next_run_time=datetime.now())
+    job.modify(next_run_time=datetime.now(utc))
     self.scheduler.start()
 
   def run(self):
