@@ -37,8 +37,10 @@ RUN set -ex; \
 	dockerd -v; \
 	docker -v
 
-COPY app /opt/docker-swarm-service-autoscaler
+COPY app /opt/docker-swarm-service-autoscaler/app
 
-RUN pip install -r /opt/docker-swarm-service-autoscaler/requirements.txt
+RUN pip install -r /opt/docker-swarm-service-autoscaler/app/requirements.txt
 
-ENTRYPOINT ["python", "/opt/docker-swarm-service-autoscaler/main.py"]
+WORKDIR /opt/docker-swarm-service-autoscaler
+
+ENTRYPOINT ["python", "-m", "app.main"]

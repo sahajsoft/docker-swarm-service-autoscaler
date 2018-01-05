@@ -31,7 +31,7 @@ autoscale_rules:
 ```
 # Ensure python 2.x and pip installed
 pip install -r app/requirements.txt
-python app/main.py example/autoscaler.yml
+python -m app.main example/autoscaler.yml --log-level debug
 ```
 
 #### Using docker
@@ -77,7 +77,7 @@ Please checkout the [example directory](example/README.md)
 
 - [x] Docker image for this service
 - [x] Runnable example setup for testing the autoscaler
-- [x] Docker hub automated build
+- [ ] Docker hub automated build
 - [ ] Tests and CI setup
 - [ ] Timezone automatic detection or config for scheduler
 - [ ] Find and user docker HTTP API(instead of docker CLI) for get replica count and scale
