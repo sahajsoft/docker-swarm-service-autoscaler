@@ -1,0 +1,15 @@
+poll_interval_seconds: 10
+metric_stores:
+  - name: monitoring
+    type: prometheus
+    prometheus:
+      url: http://localhost:9090
+autoscale_rules:
+  - service_name: example_web
+    scale_min: 1
+    scale_max: 3
+    scale_step: 1
+    metric_store: monitoring
+    metric_query: scalar(avg(rate(http_requests_total{job="web"}[30s])))
+    scale_up_threshold: 10
+    scale_down_threshold: 5
