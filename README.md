@@ -77,10 +77,10 @@ Please checkout the [example directory](example/README.md)
 
 - [x] Docker image for this service
 - [x] Runnable example setup for testing the autoscaler
-- [ ] Docker hub automated build
+- [x] Docker hub automated build
 - [ ] Tests and CI setup
-- [ ] Timezone automatic detection or config for scheduler
-- [ ] Find and user docker HTTP API(instead of docker CLI) for get replica count and scale
-- [ ] Can there be a reverse case where scale up should happen when metric value is below threshold?
-- [ ] Validation for scale_up_threshold > scale_down_threshold?
+- [ ] Support for InfluxDB as metric store
+- [ ] Use docker HTTP API(instead of docker CLI) to get replica_count and for scaling
+- [ ] Demo video
+- [ ] Can there be a reverse case where scale up should happen when metric value is below threshold? Or Validation for scale_up_threshold > scale_down_threshold
 - [ ] HA mode for autoscaler
