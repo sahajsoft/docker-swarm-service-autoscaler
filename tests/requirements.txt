@@ -1,0 +1,4 @@
+-r ../app/requirements.txt
+mock
+pytest
+pytest-watch

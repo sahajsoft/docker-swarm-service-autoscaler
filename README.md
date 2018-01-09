@@ -59,19 +59,7 @@ services:
 
 ## Example
 
-Please checkout the [example directory](example/README.md)
-
-## High level logic
-
-```py
-  for every poll_interval_seconds:
-    current_replica_count = docker_client.get_service_replica_count(service_name)
-    metric_value = metric_store.get_metric_value(metric)
-    if metric_value > scale_up_threshold and current_replica_count + scale_step < scale_max:
-      docker_client.scale_service(service_name, current_replica_count + scale_step)
-    if metric_value < scale_down_threshold and current_replica_count - scale_step > scale_min:
-      docker_client.scale_service(service_name, current_replica_count - scale_step)
-```
+Please checkout the [examples here](example/README.md)
 
 ## TODO
 
@@ -79,6 +67,8 @@ Please checkout the [example directory](example/README.md)
 - [x] Runnable example setup for testing the autoscaler
 - [x] Docker hub automated build
 - [ ] Tests and CI setup
+- [ ] Defaults for missing configuration which can have defaults
+- [ ] Helpful error for missing configuration
 - [ ] Support for InfluxDB as metric store
 - [ ] Use docker HTTP API(instead of docker CLI) to get replica_count and for scaling
 - [ ] Demo video
