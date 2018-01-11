@@ -1,6 +1,7 @@
 from datetime import datetime
 import logging
 
+logger = logging.getLogger(__name__)
 
 class Autoscaler(object):
     def __init__(self, config, docker_client, metric_store_factory, scheduler):
@@ -34,13 +35,13 @@ class Autoscaler(object):
             metric_store = self.metric_stores_map[metric_store_name]
 
             current_replica_count = self.docker_client.get_service_replica_count(service_name=service_name)
-            logging.debug("Replica count for {}: {}".format(service_name, current_replica_count))
+            logger.debug("Replica count for {}: {}".format(service_name, current_replica_count))
             metric_value = metric_store.get_metric_value(metric_query)
-            logging.debug("Metric value for {}: {}".format(service_name, metric_value))
+            logger.debug("Metric value for {}: {}".format(service_name, metric_value))
             if metric_value > scale_up_threshold and (current_replica_count + scale_step) <= scale_max:
-                logging.info("Scaling up {} from {} to {} as metric value is {}".format(service_name, current_replica_count, current_replica_count + scale_step, metric_value))
+                logger.info("Scaling up {} from {} to {} as metric value is {}".format(service_name, current_replica_count, current_replica_count + scale_step, metric_value))
                 self.docker_client.scale_service(service_name=service_name, replica_count=current_replica_count + scale_step)
             if metric_value < scale_down_threshold and (current_replica_count - scale_step) >= scale_min:
-                logging.info("Scaling down {} from {} to {} as metric value is {}".format(service_name, current_replica_count, current_replica_count - scale_step, metric_value))
+                logger.info("Scaling down {} from {} to {} as metric value is {}".format(service_name, current_replica_count, current_replica_count - scale_step, metric_value))
                 self.docker_client.scale_service(service_name=service_name, replica_count=current_replica_count - scale_step)
 

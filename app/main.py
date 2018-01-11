@@ -13,6 +13,8 @@ from .autoscaler import Autoscaler
 
 DEFAULT_LOG_LEVEL='info'
 
+logger = logging.getLogger(__name__)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Autoscale services in docker swarm based on rules')
     parser.add_argument('config_file', help='Path of the config file')
@@ -21,7 +23,7 @@ if __name__ == "__main__":
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.getLevelName(args.log_level.upper()))
     with open(args.config_file) as config_file:
         config = yaml.load(config_file)
-        logging.debug("Config %s", config)
+        logger.debug("Config %s", config)
         metric_store_factory = MetricStoreFactory()
         docker_client = DockerAPIBasedClient()
         scheduler = BlockingScheduler(timezone=utc)
