@@ -4,12 +4,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 class Autoscaler(object):
-    def __init__(self, config, docker_client, metric_store_factory, scheduler):
+    def __init__(self, config, docker_client, metric_store_factory, scheduler, datetime_module=None):
         self.config = config
         self.docker_client = docker_client
         self.metric_store_factory = metric_store_factory
         self.scheduler = scheduler
         self.metric_stores_map = {}
+        self.datetime_module = datetime_module or datetime
         metric_store_configs = self.config['metric_stores']
         for metric_store_config in metric_store_configs:
             metric_store_name = metric_store_config['name']
@@ -18,7 +19,7 @@ class Autoscaler(object):
 
     def start(self):
         job = self.scheduler.add_job(self.run, 'interval', seconds=self.config['poll_interval_seconds'])
-        job.modify(next_run_time=datetime.now(self.scheduler.timezone))
+        job.modify(next_run_time=self.datetime_module.now(self.scheduler.timezone))
         self.scheduler.start()
 
     def run(self):
