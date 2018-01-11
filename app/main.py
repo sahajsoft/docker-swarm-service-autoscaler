@@ -6,7 +6,8 @@ import logging
 from pytz import utc
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from .dockerclients.cli_client import DockerCLIBasedClient
+from .docker.cli_client import DockerCLIBasedClient
+from .docker.api_client import DockerAPIBasedClient
 from .metricstores import MetricStoreFactory
 from .autoscaler import Autoscaler
 
@@ -22,7 +23,7 @@ if __name__ == "__main__":
         config = yaml.load(config_file)
         logging.debug("Config %s", config)
         metric_store_factory = MetricStoreFactory()
-        docker_client = DockerCLIBasedClient()
+        docker_client = DockerAPIBasedClient()
         scheduler = BlockingScheduler(timezone=utc)
         autoscaler = Autoscaler(config, docker_client, metric_store_factory, scheduler)
     autoscaler.start()

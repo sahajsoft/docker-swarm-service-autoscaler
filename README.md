@@ -1,4 +1,4 @@
-# Docker swarm service autoscaler
+# Docker swarm service autoscaler [![Build Status](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler.svg?branch=master)](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler?branch=master)
 
 > Currently in Pre-Aplha stage
 
@@ -66,11 +66,12 @@ Please checkout the [examples here](example/README.md)
 - [x] Docker image for this service
 - [x] Runnable example setup for testing the autoscaler
 - [x] Docker hub automated build
-- [ ] Tests and CI setup
+- [x] Tests and CI setup
+- [x] Use docker HTTP API(instead of docker CLI) to get replica_count and for scaling
+- [ ] Cool off period for scaling
 - [ ] Defaults for missing configuration which can have defaults
 - [ ] Helpful error for missing configuration
 - [ ] Support for InfluxDB as metric store
-- [ ] Use docker HTTP API(instead of docker CLI) to get replica_count and for scaling
 - [ ] Demo video
 - [ ] Can there be a reverse case where scale up should happen when metric value is below threshold? Or Validation for scale_up_threshold > scale_down_threshold
 - [ ] HA mode for autoscaler

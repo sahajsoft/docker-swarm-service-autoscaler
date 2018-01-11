@@ -16,7 +16,7 @@ services:
         target: /etc/prometheus/prometheus.yml
 
   autoscaler:
-    image: sahajsoft/docker-swarm-service-autoscaler
+    image: sahajsoft/docker-swarm-service-autoscaler:latest
     command: "/etc/docker-swarm-service-autoscaler/autoscaler.yml --log-leve=DEBUG"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
