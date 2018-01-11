@@ -4,4 +4,6 @@ python:
 install:
   - pip install -r tests/requirements.txt
 script:
-  - py.test
+  - py.test --cov=app
+after_success:
+  - codecov
