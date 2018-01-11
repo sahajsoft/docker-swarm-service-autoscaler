@@ -1,4 +1,4 @@
-# Docker swarm service autoscaler [![Build Status](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler.svg?branch=master)](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler?branch=master)
+# Docker swarm service autoscaler [![Build Status](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler.svg?branch=master)](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler?branch=master) [![codecov](https://codecov.io/gh/sahajsoft/docker-swarm-service-autoscaler/branch/master/graph/badge.svg)](https://codecov.io/gh/sahajsoft/docker-swarm-service-autoscaler)
 
 > Currently in Pre-Aplha stage
 
