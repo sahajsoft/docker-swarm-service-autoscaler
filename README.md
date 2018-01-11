@@ -1,7 +1,5 @@
 # Docker swarm service autoscaler [![Build Status](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler.svg?branch=master)](https://travis-ci.org/sahajsoft/docker-swarm-service-autoscaler?branch=master) [![codecov](https://codecov.io/gh/sahajsoft/docker-swarm-service-autoscaler/branch/master/graph/badge.svg)](https://codecov.io/gh/sahajsoft/docker-swarm-service-autoscaler)
 
-> Currently in Pre-Aplha stage
-
 Scales the number of docker containers for service based on threshold(s) for metrics
 
 ## Configuration
