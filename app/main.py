@@ -6,7 +6,6 @@ import logging
 from pytz import utc
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from .docker.cli_client import DockerCLIBasedClient
 from .docker.api_client import DockerAPIBasedClient
 from .metricstores import MetricStoreFactory
 from .autoscaler import Autoscaler
