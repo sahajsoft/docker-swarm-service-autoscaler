@@ -61,6 +61,19 @@ services:
 
 Please checkout the [examples here](example/README.md)
 
+## Running tests
+
+```sh
+# Run tests
+py.test
+# Run tests and print coverage
+py.test --cov=app
+# Run tests and create html covergae report
+py.test --cov=app --cov-report html
+# Run tests automatically on any file change
+ptw
+```
+
 ## TODO
 
 - [x] Docker image for this service
