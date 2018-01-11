@@ -1,3 +1,4 @@
+from ..errors import UknownMetricStoreTypeException
 from .prometheus import PrometheusMetricStore
 
 
@@ -6,3 +7,5 @@ class MetricStoreFactory(object):
         metric_store_type = metric_store_config['type']
         if metric_store_type == 'prometheus':
             return PrometheusMetricStore(metric_store_config[metric_store_type])
+        else:
+            raise UknownMetricStoreTypeException(metric_store_type)
