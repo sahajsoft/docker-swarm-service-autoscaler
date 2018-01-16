@@ -79,6 +79,10 @@ py.test --cov=app --cov-report html
 ptw
 ```
 
+## Demo
+
+[![Demo: Docker swarm service autoscaler](https://img.youtube.com/vi/P1KTjvranYI/0.jpg)](https://www.youtube.com/watch?v=P1KTjvranYI)
+
 ## Metric stores
 
 * Prometheus (Supported)
