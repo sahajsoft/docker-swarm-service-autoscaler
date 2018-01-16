@@ -23,6 +23,10 @@ services:
     configs:
       - source: autoscaler.yml
         target: /etc/docker-swarm-service-autoscaler/autoscaler.yml
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
 
 configs:
   prometheus.yml:

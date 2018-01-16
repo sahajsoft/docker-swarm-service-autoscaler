@@ -5,7 +5,7 @@ Scales the number of docker containers for service based on threshold(s) for met
 ## Configuration
 
 ```yml
-poll_interval_seconds: 10
+poll_interval_seconds: 60
 metric_stores:
   - name: monitoring
     type: prometheus
@@ -22,7 +22,12 @@ autoscale_rules:
     scale_down_threshold: 200
 ```
 
-### Run
+## Running
+
+> This service must be run on a docker swarm manager node if the connection to docker daemon needs to be established via `/var/run/docker.sock`
+
+> You can alternatively pass docker host url via `DOCKER_HOST` environment variable. You can pass environment variable `DOCKER_TLS_VERIFY` to verify the host against a CA certificate and `DOCKER_CERT_PATH` for specifying
+path to a directory containing TLS certificates to use when connecting to the Docker host.
 
 #### Using code (local)
 
@@ -33,8 +38,6 @@ python -m app.main example/autoscaler.yml --log-level debug
 ```
 
 #### Using docker
-
-> This must be run on a docker swarm master node
 
 ```
 # Change example/autoscaler.yml as per your need
@@ -53,6 +56,10 @@ services:
     configs:
       - source: autoscaler.yml
         target: /etc/docker-swarm-service-autoscaler/autoscaler.yml
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
 ```
 
 ## Example
