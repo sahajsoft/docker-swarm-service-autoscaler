@@ -72,17 +72,11 @@ py.test --cov=app --cov-report html
 ptw
 ```
 
-## TODO
+## Metric stores
 
-- [x] Docker image for this service
-- [x] Runnable example setup for testing the autoscaler
-- [x] Docker hub automated build
-- [x] Tests and CI setup
-- [x] Use docker HTTP API(instead of docker CLI) to get replica_count and for scaling
-- [ ] Cool off period for scaling
-- [ ] Defaults for missing configuration which can have defaults
-- [ ] Helpful error for missing configuration
-- [ ] Support for InfluxDB as metric store
-- [ ] Demo video
-- [ ] Can there be a reverse case where scale up should happen when metric value is below threshold? Or Validation for scale_up_threshold > scale_down_threshold
-- [ ] HA mode for autoscaler
+* Prometheus (Supported)
+* InfluxDB (Pending): [#4](issues/4)
+
+## Contributing
+
+Please raise an [issue](issues) for feature requests & bugs. Please submit a [pull request](pulls) to contribute code
